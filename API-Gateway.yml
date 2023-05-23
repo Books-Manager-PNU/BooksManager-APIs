@@ -1,0 +1,1938 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8081
+    description: Generated server url
+paths:
+  /api/books/{id}:
+    get:
+      tags:
+        - book-controller
+      operationId: findById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookResponseDto'
+    put:
+      tags:
+        - book-controller
+      operationId: updateTaskById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookRequestDto'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookResponseDto'
+    delete:
+      tags:
+        - book-controller
+      operationId: deleteTaskById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+  /api/books:
+    get:
+      tags:
+        - book-controller
+      operationId: findAll
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookResponseDto'
+    post:
+      tags:
+        - book-controller
+      operationId: addBook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookRequestDto'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookResponseDto'
+  /api/books/testAPI:
+    get:
+      tags:
+        - book-controller
+      operationId: testApiGatewayEndpoint
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /api/bookshelves/{id}:
+    get:
+      tags:
+        - book-shelf-controller
+      operationId: findBookshelfById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfResponseDto'
+    put:
+      tags:
+        - book-shelf-controller
+      operationId: updateBookShelfById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookShelfRequestDto'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfResponseDto'
+    delete:
+      tags:
+        - book-shelf-controller
+      operationId: deleteBookShelfById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+  /api/bookshelf-favourites/{id}:
+    get:
+      tags:
+        - book-shelf-favourite-controller
+      operationId: findById_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfFavouriteResponseDto'
+    put:
+      tags:
+        - book-shelf-favourite-controller
+      operationId: updateBookShelfById_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookShelfFavouriteRequestDto'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfFavouriteResponseDto'
+    delete:
+      tags:
+        - book-shelf-favourite-controller
+      operationId: deleteBookShelfById_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+  /api/bookshelf-category-books/{id}:
+    get:
+      tags:
+        - book-shelf-category-book-controller
+      operationId: findById_2
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfCategoryBookResponseDto'
+    put:
+      tags:
+        - book-shelf-category-book-controller
+      operationId: updateBookShelfById_2
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookShelfCategoryBookRequestDto'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfCategoryBookResponseDto'
+    delete:
+      tags:
+        - book-shelf-category-book-controller
+      operationId: deleteBookShelfById_2
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+  /api/bookshelf-categories/{id}:
+    get:
+      tags:
+        - book-shelf-category-controller
+      operationId: findById_3
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfCategoryResponseDto'
+    put:
+      tags:
+        - book-shelf-category-controller
+      operationId: updateBookShelfById_3
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookShelfCategoryRequestDto'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfCategoryResponseDto'
+    delete:
+      tags:
+        - book-shelf-category-controller
+      operationId: deleteBookShelfById_3
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+  /api/bookshelf-books/{id}:
+    get:
+      tags:
+        - book-shelf-book-controller
+      operationId: findById_4
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfBookResponseDto'
+    put:
+      tags:
+        - book-shelf-book-controller
+      operationId: updateBookShelfById_4
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookShelfBookRequestDto'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfBookResponseDto'
+    delete:
+      tags:
+        - book-shelf-book-controller
+      operationId: deleteBookShelfById_4
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+  /api/bookshelf-book-reading-progresses/{id}:
+    get:
+      tags:
+        - reading-progress-controller
+      operationId: findById_5
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ReadingProgressResponseDto'
+    put:
+      tags:
+        - reading-progress-controller
+      operationId: updateBookShelfById_5
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReadingProgressRequestDto'
+        required: true
+      responses:
+        '202':
+          description: Accepted
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ReadingProgressResponseDto'
+    delete:
+      tags:
+        - reading-progress-controller
+      operationId: deleteBookShelfById_5
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: No Content
+  /api/bookshelves:
+    get:
+      tags:
+        - book-shelf-controller
+      operationId: findAllBookShelves
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookShelfResponseDto'
+    post:
+      tags:
+        - book-shelf-controller
+      operationId: addBookShelf
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookShelfRequestDto'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfResponseDto'
+  /api/bookshelf-favourites:
+    get:
+      tags:
+        - book-shelf-favourite-controller
+      operationId: findAll_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookShelfFavouriteResponseDto'
+    post:
+      tags:
+        - book-shelf-favourite-controller
+      operationId: addBookShelf_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookShelfFavouriteRequestDto'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfFavouriteResponseDto'
+  /api/bookshelf-category-books:
+    get:
+      tags:
+        - book-shelf-category-book-controller
+      operationId: findAll_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookShelfCategoryBookResponseDto'
+    post:
+      tags:
+        - book-shelf-category-book-controller
+      operationId: addBookShelf_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookShelfCategoryBookRequestDto'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfCategoryBookResponseDto'
+  /api/bookshelf-categories:
+    get:
+      tags:
+        - book-shelf-category-controller
+      operationId: findAll_3
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookShelfCategoryResponseDto'
+    post:
+      tags:
+        - book-shelf-category-controller
+      operationId: addBookShelf_3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookShelfCategoryRequestDto'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfCategoryResponseDto'
+  /api/bookshelf-books:
+    get:
+      tags:
+        - book-shelf-book-controller
+      operationId: findAll_4
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookShelfBookResponseDto'
+    post:
+      tags:
+        - book-shelf-book-controller
+      operationId: addBookShelfBook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookShelfBookRequestDto'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BookShelfBookResponseDto'
+  /api/bookshelf-book-reading-progresses:
+    get:
+      tags:
+        - reading-progress-controller
+      operationId: findAll_5
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReadingProgressResponseDto'
+    post:
+      tags:
+        - reading-progress-controller
+      operationId: addBookShelf_4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReadingProgressRequestDto'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ReadingProgressResponseDto'
+  /api/users/{id}:
+    get:
+      tags:
+        - user-controller
+      operationId: getUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserResponseDto'
+    put:
+      tags:
+        - user-controller
+      operationId: updateUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserResponseDto'
+    delete:
+      tags:
+        - user-controller
+      operationId: deleteUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/auth/register:
+    post:
+      tags:
+        - auth-controller
+      operationId: register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/auth/authenticate:
+    post:
+      tags:
+        - auth-controller
+      operationId: auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+  /api/users:
+    get:
+      tags:
+        - user-controller
+      operationId: getAllUsers
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserResponseDto'
+  /api/reviews/{id}:
+    get:
+      tags:
+        - review-controller
+      operationId: getReview
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ReviewResponseDto'
+    put:
+      tags:
+        - review-controller
+      operationId: updateReview
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: user
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ReviewResponseDto'
+    delete:
+      tags:
+        - review-controller
+      operationId: deleteReview
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/review-comments/{id}:
+    get:
+      tags:
+        - review-comment-controller
+      operationId: getReviewComment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ReviewCommentResponseDto'
+    put:
+      tags:
+        - review-comment-controller
+      operationId: updateReviewComment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: user
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewCommentRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ReviewCommentResponseDto'
+    delete:
+      tags:
+        - review-comment-controller
+      operationId: deleteReviewComment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/forums/{id}:
+    get:
+      tags:
+        - forum-controller
+      operationId: getForum
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ForumResponseDto'
+    put:
+      tags:
+        - forum-controller
+      operationId: updateForum
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: user
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForumRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ForumResponseDto'
+    delete:
+      tags:
+        - forum-controller
+      operationId: deleteForum
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/forum-comments/{id}:
+    get:
+      tags:
+        - forum-comment-controller
+      operationId: getForumComment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ForumCommentResponseDto'
+    put:
+      tags:
+        - forum-comment-controller
+      operationId: updateForumComment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: user
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForumCommentRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ForumCommentResponseDto'
+    delete:
+      tags:
+        - forum-comment-controller
+      operationId: deleteForumComment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/reviews:
+    get:
+      tags:
+        - review-controller
+      operationId: getAllReviews
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReviewResponseDto'
+    post:
+      tags:
+        - review-controller
+      operationId: addReview
+      parameters:
+        - name: user
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ReviewResponseDto'
+  /api/review-comments:
+    get:
+      tags:
+        - review-comment-controller
+      operationId: getAllReviewComments
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReviewCommentResponseDto'
+    post:
+      tags:
+        - review-comment-controller
+      operationId: addReviewComment
+      parameters:
+        - name: user
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewCommentRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ReviewCommentResponseDto'
+  /api/forums:
+    get:
+      tags:
+        - forum-controller
+      operationId: getAllForums
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForumResponseDto'
+    post:
+      tags:
+        - forum-controller
+      operationId: addForum
+      parameters:
+        - name: user
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForumRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ForumResponseDto'
+  /api/forum-comments:
+    get:
+      tags:
+        - forum-comment-controller
+      operationId: getAllForumComments
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForumCommentResponseDto'
+    post:
+      tags:
+        - forum-comment-controller
+      operationId: addForumComment
+      parameters:
+        - name: user
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForumCommentRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ForumCommentResponseDto'
+  /api/theme-settings/{id}:
+    get:
+      tags:
+        - theme-settings-controller
+      operationId: get
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ThemeSettingsResponseDto'
+    put:
+      tags:
+        - theme-settings-controller
+      operationId: update
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThemeSettingsRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ThemeSettingsResponseDto'
+    delete:
+      tags:
+        - theme-settings-controller
+      operationId: delete
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/security-settings/{id}:
+    get:
+      tags:
+        - security-settings-controller
+      operationId: get_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SecuritySettingsResponseDto'
+    put:
+      tags:
+        - security-settings-controller
+      operationId: update_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SecuritySettingsRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SecuritySettingsResponseDto'
+    delete:
+      tags:
+        - security-settings-controller
+      operationId: delete_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/language-settings/{id}:
+    get:
+      tags:
+        - language-settings-controller
+      operationId: get_2
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/LanguageSettingsResponseDto'
+    put:
+      tags:
+        - language-settings-controller
+      operationId: update_2
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LanguageSettingsRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/LanguageSettingsResponseDto'
+    delete:
+      tags:
+        - language-settings-controller
+      operationId: delete_2
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+  /api/theme-settings:
+    get:
+      tags:
+        - theme-settings-controller
+      operationId: getAll
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ThemeSettingsResponseDto'
+    post:
+      tags:
+        - theme-settings-controller
+      operationId: add
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThemeSettingsRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ThemeSettingsResponseDto'
+  /api/security-settings:
+    get:
+      tags:
+        - security-settings-controller
+      operationId: getAll_1
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SecuritySettingsResponseDto'
+    post:
+      tags:
+        - security-settings-controller
+      operationId: add_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SecuritySettingsRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/SecuritySettingsResponseDto'
+  /api/language-settings:
+    get:
+      tags:
+        - language-settings-controller
+      operationId: getAll_2
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LanguageSettingsResponseDto'
+    post:
+      tags:
+        - language-settings-controller
+      operationId: add_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LanguageSettingsRequestDto'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/LanguageSettingsResponseDto'
+components:
+  schemas:
+    Author:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    BookRequestDto:
+      required:
+        - author
+        - description
+        - publicationDate
+        - publisher
+        - title
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+        author:
+          $ref: '#/components/schemas/Author'
+        publisher:
+          $ref: '#/components/schemas/Publisher'
+        publicationDate:
+          type: string
+          format: date-time
+    Publisher:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        location:
+          type: string
+        website:
+          type: string
+    BookResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+        author:
+          $ref: '#/components/schemas/Author'
+    BookShelfRequestDto:
+      required:
+        - name
+        - userId
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        userId:
+          type: integer
+          format: int64
+    BookShelfResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    BookShelf:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        userId:
+          type: integer
+          format: int64
+        updateDate:
+          type: string
+          format: date-time
+        createDate:
+          type: string
+          format: date-time
+    BookShelfBook:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        bookshelfId:
+          $ref: '#/components/schemas/BookShelf'
+        bookId:
+          type: integer
+          format: int64
+        updateDate:
+          type: string
+          format: date-time
+        createDate:
+          type: string
+          format: date-time
+        read:
+          type: boolean
+    BookShelfFavouriteRequestDto:
+      required:
+        - bookshelfBookId
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        bookshelfBookId:
+          $ref: '#/components/schemas/BookShelfBook'
+    BookShelfFavouriteResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        bookshelfBookId:
+          $ref: '#/components/schemas/BookShelfBook'
+    BookShelfCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        updateDate:
+          type: string
+          format: date-time
+        createDate:
+          type: string
+          format: date-time
+    BookShelfCategoryBookRequestDto:
+      required:
+        - bookShelfCategoryId
+        - bookshelfBookId
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        bookshelfBookId:
+          $ref: '#/components/schemas/BookShelfBook'
+        bookShelfCategoryId:
+          $ref: '#/components/schemas/BookShelfCategory'
+    BookShelfCategoryBookResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        bookshelfBookId:
+          $ref: '#/components/schemas/BookShelfBook'
+        bookShelfCategoryId:
+          $ref: '#/components/schemas/BookShelfCategory'
+    BookShelfCategoryRequestDto:
+      required:
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    BookShelfCategoryResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    BookShelfBookRequestDto:
+      required:
+        - bookId
+        - bookShelfId
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        bookShelfId:
+          type: integer
+          format: int64
+        bookId:
+          type: integer
+          format: int64
+    BookShelfBookResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        bookId:
+          type: integer
+          format: int64
+        bookShelfId:
+          type: integer
+          format: int64
+    ReadingProgressRequestDto:
+      required:
+        - bookshelfBookId
+        - readPages
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        bookshelfBookId:
+          $ref: '#/components/schemas/BookShelfBook'
+        readPages:
+          type: integer
+          format: int32
+    ReadingProgressResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        bookshelfBookId:
+          $ref: '#/components/schemas/BookShelfBook'
+        readPages:
+          type: integer
+          format: int32
+    UserRequestDto:
+      required:
+        - email
+        - password
+        - username
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+    UserResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
+          enum:
+            - USER
+            - ADMIN
+    AuthResponse:
+      type: object
+      properties:
+        token:
+          type: string
+    AuthRequest:
+      required:
+        - email
+        - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    ReviewRequestDto:
+      required:
+        - bookId
+        - commentText
+      type: object
+      properties:
+        bookId:
+          type: integer
+          format: int64
+        rating:
+          maximum: 10
+          minimum: 0
+          type: integer
+          format: int32
+        commentText:
+          type: string
+    ReviewResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        userId:
+          type: integer
+          format: int64
+        bookId:
+          type: integer
+          format: int64
+        rating:
+          type: integer
+          format: int32
+        commentText:
+          type: string
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        bookId:
+          type: integer
+          format: int64
+        score:
+          maximum: 10
+          minimum: 0
+          type: integer
+          format: int32
+        userId:
+          type: integer
+          format: int64
+        updateDate:
+          type: string
+          format: date-time
+        createDate:
+          type: string
+          format: date-time
+    ReviewCommentRequestDto:
+      required:
+        - commentText
+        - reviewId
+      type: object
+      properties:
+        commentText:
+          type: string
+        reviewId:
+          $ref: '#/components/schemas/Review'
+    ReviewCommentResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        commentText:
+          type: string
+        userId:
+          type: integer
+          format: int64
+        reviewId:
+          $ref: '#/components/schemas/Review'
+    ForumRequestDto:
+      required:
+        - description
+        - title
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+    ForumResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+        userId:
+          type: integer
+          format: int64
+    Forum:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        description:
+          type: string
+        userId:
+          type: integer
+          format: int64
+        updateDate:
+          type: string
+          format: date-time
+        createDate:
+          type: string
+          format: date-time
+    ForumCommentRequestDto:
+      required:
+        - commentText
+        - forumId
+      type: object
+      properties:
+        commentText:
+          type: string
+        forumId:
+          $ref: '#/components/schemas/Forum'
+    ForumCommentResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        commentText:
+          type: string
+        userId:
+          type: integer
+          format: int64
+        forumId:
+          $ref: '#/components/schemas/Forum'
+    ThemeSettingsRequestDto:
+      required:
+        - themeName
+        - userId
+      type: object
+      properties:
+        themeName:
+          type: string
+        userId:
+          type: integer
+          format: int64
+    ThemeSettingsResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        themeName:
+          type: string
+        userId:
+          type: integer
+          format: int64
+    SecuritySettingsRequestDto:
+      required:
+        - twoFactorAuthentication
+        - userId
+      type: object
+      properties:
+        twoFactorAuthentication:
+          type: boolean
+        userId:
+          type: integer
+          format: int64
+    SecuritySettingsResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        twoFactorAuthentication:
+          type: boolean
+        userId:
+          type: integer
+          format: int64
+    LanguageSettingsRequestDto:
+      required:
+        - languageName
+        - userId
+      type: object
+      properties:
+        languageName:
+          type: string
+        userId:
+          type: integer
+          format: int64
+    LanguageSettingsResponseDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        languageName:
+          type: string
+        userId:
+          type: integer
+          format: int64
+
+
